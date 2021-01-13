@@ -922,6 +922,7 @@ inline void igl::copyleft::cgal::SelfIntersectMesh<
   const size_t num_pairs = candidate_triangle_pairs.size();
   const size_t chunk_size = num_pairs / num_threads;
   std::vector<std::thread> threads;
+  num_threads = 1;  // DISABLE MULTITHREADING
   for (size_t i=0; i<num_threads-1; i++) 
   {
     threads.emplace_back(process_chunk, i*chunk_size, (i+1)*chunk_size);
